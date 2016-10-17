@@ -27,14 +27,20 @@ const dataLog = require('utilitytoolwash');
 
 // Use the utilitytoolwash
 // Debug = ON Console.logging Data into log file
-  dataLog(`${new Date()}`, 'Our Server is Running', port);
+  dataLog(null, 'Our Server is Running', port);
 ```
 <br>
 
 Make sure to follow these steps when using the data to log into your log directory.
 
+If you want to be able to catch an error pass in the error as the first parameter
 ```
 //Used: date, message and object in it.
-dataLog(`${new Date()}`, 'Our Server is Running', port);
+dataLog(err, 'Our Server is Running', port);
 ```
-Make sure when adding your **dataLog();** first comes the **date**, then the **text message** which explain the function or process that you wanna **console.log** out to the **.log directory** and finally the **object** you are using.
+</br>
+
+If you want an `err` is not defined in the same scope as `dataLog` then pass in `null` as the first argument.
+
+
+Make sure when adding your **dataLog();** first comes the **error**, then the **text message** which explain the function or process that you wanna **console.log** out to the **.log directory** and finally the **object** you are using.
