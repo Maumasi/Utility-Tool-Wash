@@ -1,32 +1,33 @@
 
 const expect = require('chai').expect;
-const remer = require('../debug');
+const debug = require('../debug');
 
 // turn on debug mode for these tests
 process.env.DEBUG = true;
 describe('debug log tool tests', () => {
   // Read url by id
-  it('remer should return "sucess" when using console.log()', (done) => {
+  it('debug should return "log" when using console.log()', (done) => {
     // const test = remer.debug('this is a log', 'sucess');
 
-    const t = remer.debug('', 'sucess');
-    expect(t).to.equal('sucess');
+    const log = debug('make a nowmal log', null, null);
+    expect(log).to.equal('log');
     done();
   });
 
-  it('remer should return "warn" when using console.warn()', (done) => {
+  it('debug should return "warn" when using console.warn()', (done) => {
     // const test = remer.debug('this is a log', 'sucess');
 
-    const t = remer.debug('', 'warn');
-    expect(t).to.equal('warn');
+    const log = debug('force a warning', null, null, 'warn');
+    expect(log).to.equal('warn');
     done();
   });
 
-  it('remer should return "fail" when using console.error()', (done) => {
+  it('debug should return "error" when using console.error()', (done) => {
     // const test = remer.debug('this is a log', 'sucess');
 
-    const t = remer.debug('', 'fail');
-    expect(t).to.equal('fail');
+    const err = new Error();
+    const log = debug('forced an error', null, err);
+    expect(log).to.equal('error');
     done();
   });
 });
