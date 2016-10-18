@@ -3,44 +3,37 @@
 <br>
 # install
 Write the below code in the terminal for your application.
-```
+```bash
 npm i -s utilitytoolwash
 ```
 
-
+### Environment variables
+to see logs to the console you have to set the environmental variable to true before the call to run your app.
+```bash
+DEGUB=true node app.js
+```
 
 ### How to Use the Package
 
-Add a directory and log file **log/debugs.log** into your root to grab all the log queries from **utilitytoolwash**
-
-```
-// Add log directory and debugs.log files to root of your application
-mkdir log
-cd log
-touch debugs.log
-```
-
 #### Example
-```
+```javascript
 // Call The Module into a script
 const dataLog = require('utilitytoolwash');
 
-// Use the utilitytoolwash
-// Debug = ON Console.logging Data into log file
-  dataLog(null, 'Our Server is Running', port);
+// parameters:
+// 1. msg : [string] the title of the log
+// 2. obj : [object] to be passed to log
+// 3. err : [error obj] pass in any potential errors. By default is set to null
+// 4. status : [string] accepts ['log', 'warn', 'error']. By default is set to 'log'
+dataLog('Our Server is Running', port);
+
+// log an error
+dataLog('Hit an error', null, err);
+
+// give a warning log
+dataLog('If this is hit give a warning', warnObj, err, 'warn');
 ```
 <br>
-
-Make sure to follow these steps when using the data to log into your log directory.
-
-If you want to be able to catch an error pass in the error as the first parameter
-```
-//Used: date, message and object in it.
-dataLog(err, 'Our Server is Running', port);
-```
+**Note:**
+Only the first 2 parameters are required: `msg`, `obj`
 </br>
-
-If you want an `err` is not defined in the same scope as `dataLog` then pass in `null` as the first argument.
-
-
-Make sure when adding your **dataLog();** first comes the **error**, then the **text message** which explain the function or process that you wanna **console.log** out to the **.log directory** and finally the **object** you are using.
