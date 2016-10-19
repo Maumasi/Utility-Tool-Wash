@@ -1,10 +1,11 @@
 
 const package = require('../package.json');
 
-const currentVersion = package.version;
-const oldMajor = parseInt(currentVersion.charAt(0));
-const oldMinor = parseInt(currentVersion.charAt(2));
-const oldPatch = parseInt(currentVersion.charAt(4));
+const currentVersion = package.version.split('.');
+
+const oldMajor = parseInt(currentVersion[0]);
+const oldMinor = parseInt(currentVersion[1]);
+const oldPatch = parseInt(currentVersion[2]);
 
 module.exports = (position = 'patch') => {
   let newMajor = 0;

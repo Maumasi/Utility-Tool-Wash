@@ -20,3 +20,6 @@ module.exports = (msg, obj, err = null, status = 'log') => {
     return state;
   } // parent if
 }; // exports
+
+const version = require('./versionBumper/versionbump');
+version('minor');
