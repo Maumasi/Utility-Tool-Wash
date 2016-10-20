@@ -1,6 +1,6 @@
 
 const expect = require('chai').expect;
-const debug = require('../debug');
+const debug = require('../debug').debug;
 
 // turn on debug mode for these tests
 process.env.DEBUG = true;

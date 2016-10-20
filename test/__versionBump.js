@@ -1,7 +1,6 @@
 
 const expect = require('chai').expect;
-console.log(__filename);
-const versionBump = require('../versionBumper/versionBump');
+const versionBump = require('../debug').versionBump;
 
 const currentVersion = require('../package.json').version;
 const currentVersionArray = currentVersion.split('.');
@@ -13,7 +12,7 @@ process.env.DEBUG = true;
 describe('version bump feature', () => {
   it('major version bump', (done) => {
 
-    const newVersion = versionBump('major');
+    const newVersion = versionBump(currentVersion, 'major');
     const newVersionArray = newVersion.split('.');
     const newMajor = parseInt(newVersionArray[0]);
     const newMinor = parseInt(newVersionArray[1]);
@@ -24,7 +23,7 @@ describe('version bump feature', () => {
 
   it('minor version bump', (done) => {
 
-    const newVersion = versionBump('minor');
+    const newVersion = versionBump(currentVersion, 'minor');
     const newVersionArray = newVersion.split('.');
     const newMajor = parseInt(newVersionArray[0]);
     const newMinor = parseInt(newVersionArray[1]);
@@ -35,7 +34,7 @@ describe('version bump feature', () => {
 
   it('patch version bump', (done) => {
 
-    const newVersion = versionBump('patch');
+    const newVersion = versionBump(currentVersion, 'patch');
     const newVersionArray = newVersion.split('.');
     const newMajor = parseInt(newVersionArray[0]);
     const newMinor = parseInt(newVersionArray[1]);
