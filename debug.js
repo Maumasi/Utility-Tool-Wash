@@ -33,7 +33,12 @@ exports.debug = (msg, obj, error, stat) => {
 
 
 // version bump tool
-exports.versionBump = (version, position = 'patch') => {
+exports.versionBump = (version, pos) => {
+  let position = pos;
+  if (!(pos == 'patch' || pos == 'minor' || pos == 'major')) {
+    position = 'patch';
+  }
+  position = 'patch'
   const currentVersion = version.split('.');
 
   const oldMajor = parseInt(currentVersion[0]);
