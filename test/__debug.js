@@ -17,8 +17,8 @@ describe('debug log tool tests', () => {
   it('debug should return "warn" when using console.warn()', (done) => {
     // const test = remer.debug('this is a log', 'sucess');
 
-    const log = debug('force a warning', null, null, 'warn');
-    expect(log).to.equal('warn');
+    const log = debug('force a warning', null, null, 'warning');
+    expect(log).to.equal('warning');
     done();
   });
 

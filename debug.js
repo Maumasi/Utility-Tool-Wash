@@ -1,20 +1,19 @@
-const fs = require('fs');
 // Color Modules to Get Colors in Terminal for Console Data
 const colors = require('colors');
 
 // Debug Module, if DEBUG=true nodemon src/server.js console.log will be ON
 exports.debug = (msg, obj, error, stat) => {
-  let status = stat;
+  var status = stat;
   if (!(stat == 'log' || stat == 'warning' || stat == 'error')) {
     status = 'log';
   }
 
-  let err = error;
+  var err = error;
   if (!error) {
     err = null;
   }
 
-  let state = status;
+  var state = status;
   const date = new Date();
   if (process.env.DEBUG) {
     if (err) {
@@ -38,16 +37,16 @@ exports.versionBump = (version, pos) => {
   if (!(pos == 'patch' || pos == 'minor' || pos == 'major')) {
     position = 'patch';
   }
-  position = 'patch'
+  
   const currentVersion = version.split('.');
 
   const oldMajor = parseInt(currentVersion[0]);
   const oldMinor = parseInt(currentVersion[1]);
   const oldPatch = parseInt(currentVersion[2]);
 
-  let newMajor = 0;
-  let newMinor = 0;
-  let newPatch = 0;
+  var newMajor = 0;
+  var newMinor = 0;
+  var newPatch = 0;
 
   if (position === 'major') {
     newMajor = oldMajor + 1;
