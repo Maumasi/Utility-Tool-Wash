@@ -3,7 +3,17 @@ const fs = require('fs');
 const colors = require('colors');
 
 // Debug Module, if DEBUG=true nodemon src/server.js console.log will be ON
-exports.debug = (msg, obj, err = null, status = 'log') => {
+exports.debug = (msg, obj, error, stat) => {
+  let status = stat;
+  if (!(stat == 'log' || stat == 'warning' || stat == 'error')) {
+    status = 'log';
+  }
+
+  let err = error;
+  if (!error) {
+    err = null;
+  }
+
   let state = status;
   const date = new Date();
   if (process.env.DEBUG) {
