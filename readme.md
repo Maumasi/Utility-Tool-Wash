@@ -40,8 +40,16 @@ Make sure when adding your **dataLog();** first comes the **error**, then the **
 ### Version Bumper
 This package has a version bumper feature. You can require it to be used to bump the current version stated in the package.json file.
 
+Ther first parameter should be the version you want bumped up. The intent for this version bupmer is for the version of the `package.json` file. You can single out the `version` in the package.json using `require()`. For example:
+```javascript
+
+const version = require('./package.json');
+
+```
+</br>
+
 This function bumps up the version based semantic versioning: **MAJOR.MINOR.PATCH** </br>
-This function takes 1 of 3 values:
+This function takes 1 of 3 values as the second argument:
 `major`: bumps current version up 1 **major** version
 `minor`: bumps current version up 1 **minor** version
 `patch`: bumps current version up 1 **patch** version
@@ -64,6 +72,3 @@ versionBumper(version, 'minor'); // returns 1.1.0
 versionBumper(version, 'patch'); // returns 1.0.1
 
 ```
-
-**Note:**
-The version bumper is a local module, so the path will change from file to file.
