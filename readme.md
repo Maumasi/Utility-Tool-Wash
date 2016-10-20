@@ -10,9 +10,9 @@ npm i -s utilitytoolwash
 ### How to Use the Package
 
 #### Example
-```
+```javascript
 // Call The Module into a script
-const dataLog = require('utilitytoolwash');
+const dataLog = require('utilitytoolwash').debug;
 
 // Use the utilitytoolwash
 // Debug = ON Console.logging Data into log file
@@ -23,7 +23,10 @@ const dataLog = require('utilitytoolwash');
 Make sure to follow these steps when using the data to log into your log directory.
 
 If you want to be able to catch an error pass in the error as the first parameter
-```
+```javascript
+// Call The Module into a script
+const dataLog = require('utilitytoolwash').debug;
+
 //Used: date, message and object in it.
 dataLog(err, 'Our Server is Running', port);
 ```
@@ -34,8 +37,8 @@ If you want an `err` is not defined in the same scope as `dataLog` then pass in 
 
 Make sure when adding your **dataLog();** first comes the **error**, then the **text message** which explain the function or process that you wanna **console.log** out to the **.log directory** and finally the **object** you are using.
 
-### Extra: version bumper
-This package has a version bumper feature. In `src/versionBumper/versionBump.js` you can require it to be used to bump the current version stated in the package.json file.
+### Version Bumper
+This package has a version bumper feature. You can require it to be used to bump the current version stated in the package.json file.
 
 This function bumps up the version based semantic versioning: **MAJOR.MINOR.PATCH** </br>
 This function takes 1 of 3 values:
@@ -46,18 +49,19 @@ This function takes 1 of 3 values:
 Examples:
 ```javascript
 // create an instance of the version bumper
-const versionBumper = require('path/to/versionBumper');
+const versionBumper = require('utilitytoolwash').versionBump;
+const version = require('path/to/package.json');
 
 // package.json current version is 1.0.0
 
 // bump up 1 major version
-versionBumper('major'); // returns 2.0.0
+versionBumper(version, 'major'); // returns 2.0.0
 
 // bump up 1 major version
-versionBumper('minor'); // returns 1.1.0
+versionBumper(version, 'minor'); // returns 1.1.0
 
 // bump up 1 major version
-versionBumper('patch'); // returns 1.0.1
+versionBumper(version, 'patch'); // returns 1.0.1
 
 ```
 
