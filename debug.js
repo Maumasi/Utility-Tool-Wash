@@ -33,11 +33,11 @@ exports.debug = (msg, obj, error, stat) => {
 
 // version bump tool
 exports.versionBump = (version, pos) => {
-  let position = pos;
+  var position = pos;
   if (!(pos == 'patch' || pos == 'minor' || pos == 'major')) {
     position = 'patch';
   }
-  
+
   const currentVersion = version.split('.');
 
   const oldMajor = parseInt(currentVersion[0]);
@@ -58,9 +58,9 @@ exports.versionBump = (version, pos) => {
     newMinor = oldMinor;
     newPatch = oldPatch + 1;
   } else {
-    const newMajor = oldMajor;
-    const newMinor = oldMinor;
-    const newPatch = oldPatch;
+    newMajor = oldMajor;
+    newMinor = oldMinor;
+    newPatch = oldPatch;
     process.stdout.write('Either you have a type-o or you for got to add what position to bump up.\npositions options ["major", "minor", "patch"]');
   }
 
