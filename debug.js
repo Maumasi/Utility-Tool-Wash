@@ -36,13 +36,9 @@ exports.versionBump = (version, position = 'patch') => {
 
   if (position === 'major') {
     newMajor = oldMajor + 1;
-    newMinor = oldMinor;
-    newPatch = oldPatch;
-
   } else if (position === 'minor') {
     newMajor = oldMajor;
     newMinor = oldMinor + 1;
-    newPatch = oldPatch;
   } else if (position === 'patch') {
     newMajor = oldMajor;
     newMinor = oldMinor;
