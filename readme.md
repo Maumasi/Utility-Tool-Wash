@@ -10,17 +10,39 @@ npm i -s utilitytoolwash
 ### How to Use the Package
 
 ### Debuging
-first the environmental variable 
+First,  the environmental variable `DEBUG` needs to be set to `true` for logs to print out to the console. like so...
+```bach
+
+DEBUG=true node src/server.js
+
+```
+</br>
+The parameters for the debug tool are:
+`(msg, obj, error, stat)`
+1. `msg` [string]: This should be the message you want to put for the purpose of the log.
+2. `obj` [object]: This is the variable object to be displayed to the console.
+3. `error` [error object]: This sends the error message to console.
+4. `stat` [string]: This should match a string from these options:
+  - `log`: success log
+  - `warning`: warning log
+  - `error`: error log
+</br>
+
 #### Example
 ```javascript
 // Call The Module into a script
 const dataLog = require('utilitytoolwash').debug;
 
-// (msg, obj, error, stat)
-// Use the utilitytoolwash
-// Debug=true node src/server.js
-// parameters are
-  dataLog(null, 'Our Server is Running', port);
+// if stat is not defined then 'log' will be the default
+// if no error is passed in a default message of 'no errors' will display in it's place
+dataLog('Our Server is Running', port);
+
+// set a log to catch a warning
+dataLog('Log a warning', port, null, 'warning');
+
+// for logs that might catch an error
+const err = new Error();
+dataLog('To catch an error', port, err, 'error');
 ```
 <br>
 

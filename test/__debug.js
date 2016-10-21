@@ -26,7 +26,7 @@ describe('debug log tool tests', () => {
     // const test = remer.debug('this is a log', 'sucess');
 
     const err = new Error();
-    const log = debug('forced an error', null, err);
+    const log = debug('forced an error', null, err, 'error');
     expect(log).to.equal('error');
     done();
   });
