@@ -4,27 +4,25 @@ const colors = require('colors');
 // Debug Module, if DEBUG=true nodemon src/server.js console.log will be ON
 exports.debug = (msg, obj, error, stat) => {
   var status = stat;
-  if (!(stat == 'log' || stat == 'warning' || stat == 'error')) {
+  if (!(stat === 'log' || stat === 'warning' || stat === 'error')) {
     status = 'log';
   }
 
   var err = error;
   if (!error) {
-    err = null;
+    err = 'no errors';
   }
 
   var state = status;
   const date = new Date();
   if (process.env.DEBUG) {
-    if (err) {
-      console.log('err was an error');
-      state = 'error';
-      console.error(date.inverse, msg.bgYellow, err);
+    if (state === 'error') {
+      console.error(colors.inverse(date), colors.red(msg), obj, err);
     } else if (state === 'warning') {
       // Console logging data
-      console.warn(date.inverse, msg.bgYellow, obj, err);
+      console.warn(colors.inverse(date), colors.bgYellow(msg), obj);
     } else {
-      console.log(date.inverse, msg.bgYellow, obj, err);
+      console.log(colors.inverse(date), colors.green(msg), obj);
     } // child if
     return state;
   } // parent if
@@ -34,7 +32,7 @@ exports.debug = (msg, obj, error, stat) => {
 // version bump tool
 exports.versionBump = (version, pos) => {
   var position = pos;
-  if (!(pos == 'patch' || pos == 'minor' || pos == 'major')) {
+  if (!(pos === 'patch' || pos === 'minor' || pos === 'major')) {
     position = 'patch';
   }
 

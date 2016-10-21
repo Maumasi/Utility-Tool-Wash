@@ -9,13 +9,17 @@ npm i -s utilitytoolwash
 
 ### How to Use the Package
 
+### Debuging
+first the environmental variable 
 #### Example
 ```javascript
 // Call The Module into a script
 const dataLog = require('utilitytoolwash').debug;
 
+// (msg, obj, error, stat)
 // Use the utilitytoolwash
-// Debug = ON Console.logging Data into log file
+// Debug=true node src/server.js
+// parameters are
   dataLog(null, 'Our Server is Running', port);
 ```
 <br>
